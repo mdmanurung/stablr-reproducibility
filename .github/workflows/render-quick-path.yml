@@ -35,6 +35,7 @@ jobs:
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
           path: stablr
+          install-package: false
           extra-packages: pkgload, rmarkdown
           cache: true
 
