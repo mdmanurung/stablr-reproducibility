@@ -1,0 +1,135 @@
+Package: stablr
+Title: Sparse and Reliable Biomarker Discovery in R
+Version: 0.3.0
+Authors@R:
+    c(
+    person(given = "Mikaël", family = "Manurung", role = c("aut", "cre", "cph"),
+           email = "mikhael.manurung@gmail.com"),
+    person(given = "Jean", family = "Hédou", role = "ctb",
+           comment = "Original STABL method (Hédou et al., Nat Biotechnol 2024)"),
+    person(given = "Ivana", family = "Marić", role = "ctb",
+           comment = "Original STABL method (Hédou et al., Nat Biotechnol 2024)"),
+    person(given = "Gregory", family = "Bellan", role = "ctb",
+           comment = "Original STABL method (Hédou et al., Nat Biotechnol 2024)"),
+    person(given = "David", family = "Gfeller", role = "ctb",
+           comment = "Original STABL method (Hédou et al., Nat Biotechnol 2024)"),
+    person(given = "Daisy Yi", family = "Ding", role = "ctb",
+           comment = "Cooperative learning / multiview method (Ding et al., PNAS 2022)"),
+    person(given = "Shuangning", family = "Li", role = "ctb",
+           comment = "Cooperative learning / multiview method (Ding et al., PNAS 2022)"),
+    person(given = "Balasubramanian", family = "Narasimhan", role = "ctb",
+           comment = "Cooperative learning / multiview method (Ding et al., PNAS 2022)"),
+    person(given = "Robert J.", family = "Tibshirani", role = "ctb",
+           comment = "Cooperative learning / multiview method (Ding et al., PNAS 2022)"),
+    person(given = "Trevor", family = "Hastie", role = "ctb"),
+    person(given = "Kenneth", family = "Tay", role = "ctb"),
+    person(given = "James", family = "Yang", role = "ctb"),
+    person(given = "Jonathan", family = "Taylor", role = "ctb")
+    )
+Description: R-native implementation of STABL for sparse and reliable biomarker
+    discovery. Provides glmnet-based stability selection, FDP+ thresholding,
+    artificial-feature controls, grouped bootstrapping, multi-omic early,
+    late, and cooperative fusion workflows, visualization helpers, and
+    export utilities without a Python or tidymodels runtime dependency. The
+    STABL method is described by
+    Hédou et al. (2024) <doi:10.1038/s41587-023-02033-x>, and cooperative
+    learning by Ding et al. (2022) <doi:10.1073/pnas.2202113119>. The
+    cooperative-learning backend (R/cooperative-*.R) is a vendored, modified
+    fork of CRAN multiview 1.0 (GPL-2); the full attribution and the
+    machine-readable divergence log ship as inst/COPYING.cooperative and
+    inst/PATCHES.cooperative.md.
+License: GPL (>= 2)
+URL: https://mdmanurung.github.io/stablr/,
+    https://github.com/mdmanurung/stablr
+BugReports: https://github.com/mdmanurung/stablr/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Depends:
+    R (>= 4.1.0)
+Imports:
+    glmnet,
+    Matrix,
+    matrixStats,
+    methods,
+    RColorBrewer,
+    stats,
+    utils,
+    withr
+LinkingTo:
+    Rcpp,
+    RcppEigen
+Suggests:
+    aorsf,
+    multiview,
+    corpcor,
+    covr,
+    furrr,
+    future,
+    ggplot2,
+    jsonlite,
+    knockoff,
+    knitr,
+    mixOmics,
+    ordinalNet,
+    ranger,
+    recipes,
+    rlang,
+    rmarkdown,
+    sparsegl,
+    survival,
+    testthat (>= 3.0.0)
+NeedsCompilation: yes
+SystemRequirements: C++17
+Collate:
+    'stablr-package.R'
+    'conditions.R'
+    'knockoff_mvr.R'
+    'artificial_features.R'
+    'bootstrap_helpers.R'
+    'data_helpers.R'
+    'exports.R'
+    'fdp_control.R'
+    'learner_adapters.R'
+    'learner_rf.R'
+    'learner_oblique_rf.R'
+    'learner_ordinal.R'
+    'metrics.R'
+    'stabl_fit.R'
+    'stabl.R'
+    'cooperative-utils.R'
+    'cooperative-multiview.control.R'
+    'RcppExports.R'
+    'cooperative-get_start.R'
+    'cooperative-mvglmnet.fit.R'
+    'cooperative-multiview.path.R'
+    'cooperative-multiview.R'
+    'cooperative-predict.multiview.R'
+    'cooperative-auc.R'
+    'cooperative-auc.mat.R'
+    'cooperative-cvtype.R'
+    'cooperative-cvstats.R'
+    'cooperative-cvcompute.R'
+    'cooperative-build_predmat.R'
+    'cooperative-cv.elnet.R'
+    'cooperative-cv.glmnetfit.R'
+    'cooperative-cv.lognet.R'
+    'cooperative-getOptcv.R'
+    'cooperative-cv.multiview.R'
+    'cooperative-predict.cv.multiview.R'
+    'cooperative-family.multiview.R'
+    'cooperative-backend.R'
+    'input_validation.R'
+    'late_fusion.R'
+    'multiomic_workflows.R'
+    'nested_cv.R'
+    'study_tools.R'
+    'stabl_accessors.R'
+    'interpretation.R'
+    'preprocessing.R'
+    'analysis_workflow.R'
+    's3_methods.R'
+    'environment_stability.R'
+    'visualization.R'
+VignetteBuilder: knitr
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.1.1

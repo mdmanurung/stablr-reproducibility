@@ -1,0 +1,11 @@
+# Raw atlas file is ~93 MB: fetch it with ./00_download_data.sh instead of
+# committing it (or use Git LFS for data/raw/ and remove this line).
+data/raw/all_cells_metadata.csv.gz
+
+# Re-run artifacts (regenerable via run_all.sh)
+outputs/
+
+# R artifacts
+.Rhistory
+.RData
+*.Rcheck/
