@@ -1,0 +1,52 @@
+# Quick-path render CI: re-renders the aging case-study report from the
+# committed result tables on every push. No refitting — minutes, not hours.
+# Full-pipeline reproduction stays a local task (see README.md).
+
+name: render-quick-path
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: render-quick-path-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout (with pinned stablr submodule)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Set up R 4.4.2
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "4.4.2"
+
+      - name: Install package dependencies (system + R)
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          path: stablr
+          extra-packages: pkgload, rmarkdown
+          cache: true
+
+      - name: Render quick-path reports
+        run: ./render_reports.sh
+
+      - name: Sanity check rendered report
+        run: test -s outputs/reports/stablr-aging-case-study.html
+
+      - name: Upload rendered reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-reports-${{ github.sha }}
+          path: outputs/reports/
+          retention-days: 14

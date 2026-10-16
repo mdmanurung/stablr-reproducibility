@@ -1,5 +1,7 @@
 # stablr Aging Case Study — Reproduction Compendium
 
+[![render-quick-path](https://github.com/mdmanurung/stablr-reproducibility/actions/workflows/render-quick-path.yml/badge.svg)](https://github.com/mdmanurung/stablr-reproducibility/actions/workflows/render-quick-path.yml)
+
 Self-contained compendium reproducing the immune-aging application case study
 of the **stablr** R package (stability-based linear model selection), from raw
 data download to rendered report:
