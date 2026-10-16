@@ -34,8 +34,7 @@ jobs:
       - name: Install package dependencies (system + R)
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          path: stablr
-          install-package: false
+          working-directory: stablr
           extra-packages: pkgload, rmarkdown
           cache: true
 
