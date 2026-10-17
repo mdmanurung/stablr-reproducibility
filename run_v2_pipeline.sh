@@ -5,10 +5,9 @@
 # secondary biology, and figures.
 #
 # Writes into the exact directories the assembly scripts consume
-# (run_m012b/run_m3b/run_m4b/run_m5b — the Amendment-1 amended runs), so the
-# committed tables in stablr/benchmarks/ws8_v2/results/ are regenerated in
-# place. Back up or rely on git:
-#   cd stablr && git checkout -- benchmarks/ws8_v2/results
+# (run_m012b/run_m3b/run_m4b/run_m5b — the Amendment-1 amended runs), then
+# syncs a canonical copy to results/ws8_v2/ (committed at the compendium
+# root; stablr is a git submodule, so its working tree is scratch).
 #
 # Runtime: several hours on 16 cores (the M4/M5 STABL groups dominate).
 # The 50-permutation null runs as one invocation; each permutation uses its
@@ -63,4 +62,8 @@ Rscript -e 'pkgload::load_all(".", compile = FALSE, quiet = TRUE); source(comman
 echo "== 10/10 figures.R =="
 Rscript -e 'pkgload::load_all(".", compile = FALSE, quiet = TRUE); source(commandArgs(TRUE))' benchmarks/ws8_v2/figures.R
 
-echo "v2 pipeline complete. Outputs: stablr/benchmarks/ws8_v2/results/"
+echo "== sync: canonical copy at results/ws8_v2/ =="
+mkdir -p "$ROOT/results/ws8_v2"
+cp -r stablr/benchmarks/ws8_v2/results/. "$ROOT/results/ws8_v2/"
+
+echo "v2 pipeline complete. Canonical outputs: results/ws8_v2/"

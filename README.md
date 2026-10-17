@@ -16,7 +16,8 @@ download, analysis, plots, report — runs on one machine with no other inputs.
 
 | Path | Contents |
 |---|---|
-| `stablr/` | Full stablr package source (v0.3.0), including `benchmarks/` (all experiment code, predeclared protocols, committed results) and `vignettes/` (9 Rmd reports + figures) |
+| `stablr/` | Git submodule pinned at `mdmanurung/stablr@5cf603b` (v0.3.0): full package source, `benchmarks/` (all experiment code, predeclared protocols, committed results) and `vignettes/` (9 Rmd reports + figures) |
+| `results/ws8_v2/` | Canonical, committed copy of the v2 benchmark outputs (the pipeline syncs its scratch outputs here) |
 | `data/raw/` | Raw per-cell atlas table, `all_cells_metadata.csv.gz` (13.1M cells, MD5-pinned) |
 | `data/derived/` | Donor-level tables consumed by the v1 showcase |
 | `figures/` | Copies of every committed figure (vignette + benchmark) for quick browsing |
@@ -42,7 +43,8 @@ download, analysis, plots, report — runs on one machine with no other inputs.
 
 ## Quick path: render the report from committed results (~minutes)
 
-The committed result tables in `stablr/benchmarks/` are exactly what the
+The committed result tables in `results/ws8_v2/` (and the other committed
+tables under the `stablr` submodule's `benchmarks/`) are exactly what the
 published vignette reads. To reproduce the report without refitting anything:
 
 ```sh
@@ -74,9 +76,11 @@ Or stage by stage:
    file (enforcing the `Bad quality` exclusion), then the six selectors
    (M0–M5) run through the 8-fold LOCO engine in four method groups, followed
    by the age-permutation null, secondary biology analyses, and figures.
-   Writes into `stablr/benchmarks/ws8_v2/results/` in place — restore the
-   committed copies afterwards with
-   `cd stablr && git checkout -- benchmarks/ws8_v2/results`.
+   Writes into the `stablr` submodule's working tree
+   (`stablr/benchmarks/ws8_v2/results/`) and syncs the canonical copy to
+   `results/ws8_v2/` (committed). A fresh verification run (2026-10-17)
+   reproduced every result file bit-for-bit; only embedded run timestamps and
+   commit hashes in `run_manifest.json` / `data_manifest.csv` differ.
 4. **Report** — `./render_reports.sh` renders the vignette, which reads the
    result tables and regenerates every figure in the published article.
 
@@ -110,8 +114,11 @@ the data.
 - The raw data file is ~93 MB (under GitHub's 100 MB limit, above the 50 MB
   recommendation). Prefer Git LFS for `data/raw/all_cells_metadata.csv.gz`, or
   gitignore it and let collaborators run `00_download_data.sh`.
-- `stablr/` is a plain source snapshot (no `.git`); its canonical history
-  lives at <https://github.com/mdmanurung/stablr>.
+- `stablr/` is a git submodule pinned at `5cf603b`; its canonical history
+  lives at <https://github.com/mdmanurung/stablr>. Clone with
+  `git clone --recurse-submodules` (or run `git submodule update --init`
+  after a plain clone). The pinned commit is exactly the package state used
+  for the committed results and the bit-for-bit verification run.
 
 ## License
 
