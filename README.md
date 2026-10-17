@@ -16,7 +16,7 @@ download, analysis, plots, report — runs on one machine with no other inputs.
 
 | Path | Contents |
 |---|---|
-| `stablr/` | Git submodule pinned at `mdmanurung/stablr@9e5c6a8` (v0.3.0.9000): full package source, `benchmarks/` (all experiment code, predeclared protocols, committed results) and `vignettes/` (9 Rmd reports + figures) |
+| `stablr/` | Git submodule pinned at `mdmanurung/stablr@6aa5a6e` (v0.3.0.9000): full package source, `benchmarks/` (all experiment code, predeclared protocols, committed results) and `vignettes/` (9 Rmd reports + figures) |
 | `results/ws8_v2/` | Canonical, committed copy of the v2 benchmark outputs (the pipeline syncs its scratch outputs here) |
 | `data/raw/` | Raw per-cell atlas table, `all_cells_metadata.csv.gz` (13.1M cells, MD5-pinned) |
 | `data/derived/` | Donor-level tables consumed by the v1 showcase |
@@ -114,7 +114,7 @@ the data.
 - The raw data file is ~93 MB (under GitHub's 100 MB limit, above the 50 MB
   recommendation). Prefer Git LFS for `data/raw/all_cells_metadata.csv.gz`, or
   gitignore it and let collaborators run `00_download_data.sh`.
-- `stablr/` is a git submodule pinned at `5cf603b`; its canonical history
+- `stablr/` is a git submodule pinned at `6aa5a6e`; its canonical history
   lives at <https://github.com/mdmanurung/stablr>. Clone with
   `git clone --recurse-submodules` (or run `git submodule update --init`
   after a plain clone). The pinned commit is exactly the package state used
