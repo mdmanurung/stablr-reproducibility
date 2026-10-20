@@ -21,9 +21,16 @@ Downloaded 2026-10-13.
 `derived/donor_celltype_counts.tsv` and `derived/donor_meta.tsv` — donor-level
 counts and metadata consumed by the v1 showcase script
 (`stablr/benchmarks/ws8_aging_showcase.R`). Derived from the raw file before the
-v1 run; the v1 derivation script was not archived (documented limitation — the
-v2 pipeline rebuilds donor tables from the raw file instead, see
-`stablr/benchmarks/ws8_v2/data_prepare.R`).
+v1 run. The original v1 derivation script was not archived;
+`derive_donor_tables.R` (this directory) is the reconstructed, verified
+replacement: it rebuilds both tables from the raw file with the same
+`Bad quality` annotation exclusion the committed tables embody, and its
+`--verify` mode proves content identity (0 mismatched / 0 unmatched rows
+against the committed files on the MD5-pinned raw file). Regenerated files
+differ from the committed ones in ROW ORDER ONLY (the original traversal
+order was not archived); all consumers read the tables order-agnostically
+via keyed matching. The v2 pipeline independently rebuilds donor tables
+from the raw file (see `stablr/benchmarks/ws8_v2/data_prepare.R`).
 
 - MD5 `donor_celltype_counts.tsv`: `bc547f072feeec6b6f49a8bdd833107e`
 - MD5 `donor_meta.tsv`: `241fbbcab1239098fb558169a927026c`

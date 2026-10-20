@@ -19,8 +19,8 @@ were verified separately and differ only in the same metadata fields.
 
 ## Submodule pin bump (2026-10-18)
 
-The `stablr/` submodule was re-pinned from `5cf603b` (v0.3.0) to `9e5c6a8`
-(v0.3.0.9000) after the documentation-audit and Phase 7 commits. The
+The `stablr/` submodule was re-pinned from `5cf603b` to `9e5c6a8`
+(both DESCRIPTION v0.3.0) after the documentation-audit and Phase 7 commits. The
 committed verification evidence above was generated at `5cf603b`; the bump
 is justified by code identity between the two revisions:
 

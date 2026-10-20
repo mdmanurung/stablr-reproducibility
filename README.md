@@ -16,7 +16,7 @@ download, analysis, plots, report — runs on one machine with no other inputs.
 
 | Path | Contents |
 |---|---|
-| `stablr/` | Git submodule pinned at `mdmanurung/stablr@6aa5a6e` (v0.3.0.9000): full package source, `benchmarks/` (all experiment code, predeclared protocols, committed results) and `vignettes/` (9 Rmd reports + figures) |
+| `stablr/` | Git submodule pinned at `mdmanurung/stablr@6aa5a6e` (v0.3.0): full package source, `benchmarks/` (all experiment code, predeclared protocols, committed results) and `vignettes/` (9 Rmd reports + figures) |
 | `results/ws8_v2/` | Canonical, committed copy of the v2 benchmark outputs (the pipeline syncs its scratch outputs here) |
 | `data/raw/` | Raw per-cell atlas table, `all_cells_metadata.csv.gz` (13.1M cells, MD5-pinned) |
 | `data/derived/` | Donor-level tables consumed by the v1 showcase |
@@ -119,6 +119,41 @@ the data.
   `git clone --recurse-submodules` (or run `git submodule update --init`
   after a plain clone). The pinned commit is exactly the package state used
   for the committed results and the bit-for-bit verification run.
+
+## Relationship to current stablr main
+
+The pin `6aa5a6e` is 36 commits behind current `main` (`ee3e5eb`, as of
+2026-10-20). The commits in between are the Phase 13 remediation (RNG
+hygiene, 1.0.0-contract closure, reliability diagnostics, null validation,
+replication profile, gaussian validated path, lean public API), the
+post-review fix batches E-1..E-4 and F-1..F-8 (silent-wrongness guards,
+fail-closed edges, typed errors, learner/preprocessing/nested-CV/study/
+multiomic/diagnostics fixes), and documentation (two single-cell vignettes
+with PBMC 3k fixtures; the package grew from 9 to 14 vignettes).
+
+**The pin deliberately stays at `6aa5a6e`.** The committed results and the
+bit-for-bit verification evidence in `verification/` were produced with the
+pinned code, and the `6aa5a6e..main` diff touches more than twenty `R/`
+files — code identity does not hold, so bumping the pin without a full
+re-run would break the guarantee that the bundled code produces the
+committed results. To move the compendium to a newer stablr:
+
+1. `cd stablr && git fetch origin && git checkout <new-sha> && cd .. &&
+   git add stablr && git commit` (record the bump).
+2. Re-run the full chain: `./run_all.sh` (many hours; the v2 LOCO
+   benchmark dominates).
+3. Regenerate the verification evidence: checksum every committed result
+   artifact before and after an independent rerun, and replace
+   `verification/pre_run_checksums.txt`, `post_run_checksums.txt`, and
+   `checksum_diff.txt`.
+4. Refresh `sessionInfo.txt` and commit code, results, and evidence
+   together.
+
+The package's other vignettes — including the single-cell integrations
+(`stablr-cebmf`, `stablr-metacells`) added after the pin — are
+self-contained: their data ship as fixtures inside the package itself
+(`stablr/inst/extdata/`, with generation scripts in `stablr/data-raw/`),
+so they need no compendium coverage.
 
 ## License
 
