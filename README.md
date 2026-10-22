@@ -122,30 +122,45 @@ the data.
 
 ## Relationship to current stablr main
 
-The pin `6aa5a6e` is 36 commits behind current `main` (`ee3e5eb`, as of
-2026-10-20). The commits in between are the Phase 13 remediation (RNG
-hygiene, 1.0.0-contract closure, reliability diagnostics, null validation,
+**The pin is now `fdbf7f1`** (the 1.0.0 API cut, bumped 2026-10-22; the
+committed results and the 2026-10-17 bit-for-bit verification evidence in
+`verification/` were produced at the earlier pin `6aa5a6e`, v0.3.0). The
+`6aa5a6e..fdbf7f1` span is the Phase 13 remediation (RNG hygiene,
+1.0.0-contract closure, reliability diagnostics, null validation,
 replication profile, gaussian validated path, lean public API), the
-post-review fix batches E-1..E-4 and F-1..F-8 (silent-wrongness guards,
-fail-closed edges, typed errors, learner/preprocessing/nested-CV/study/
-multiomic/diagnostics fixes), and documentation (two single-cell vignettes
-with PBMC 3k fixtures; the package grew from 9 to 14 vignettes).
+post-review fix batches E-1..E-4 and F-1..F-8, the Phase 14 API
+streamlining (54 -> 36 exports), and documentation (the package grew from
+9 to 14 vignettes).
 
-**The pin deliberately stays at `6aa5a6e`.** The committed results and the
-bit-for-bit verification evidence in `verification/` were produced with the
-pinned code, and the `6aa5a6e..main` diff touches more than twenty `R/`
-files — code identity does not hold, so bumping the pin without a full
-re-run would break the guarantee that the bundled code produces the
-committed results. To move the compendium to a newer stablr:
+**Sealed full v1/v2 re-run at the new pin (2026-10-22).** The full chain
+was re-run from the MD5-pinned raw atlas with the environment matched to
+`sessionInfo.txt` (R 4.4.2, ranger 0.18.0, glmnet 5.0, knockoff 0.3.6).
+Outcome: **claims-level reproducibility PASS, bit-level FAIL** — every
+re-tested claims-ledger conclusion (V1-V9) holds with the same direction
+and significance (the mixed/negative headline is unchanged in structure;
+null saturation 59/59 in 50/50 permutations is identical), while 81 of
+the 108 regenerated v2 artifacts and all regenerated v1 tables differ
+byte-level, with the delta scoped to the RNG-stream-sensitive M4/M5 STABL
+paths and the exploratory v1 layer (M0-M3 are bit-exact). The committed
+result tables in `results/ws8_v2/` and the submodule `benchmarks/` remain
+the originally published values; the re-run record, checksum evidence,
+and the full claims-impact assessment live in `verification/`
+(`VERDICT.md`, `sealed_rerun_2026-10-22/`). Re-basing the committed
+results (adopting the fresh numbers and updating the vignette's inlined
+values) is a separate, explicitly human-gated decision. The pipeline's
+final sync step has a known path bug (`run_v2_pipeline.sh` copies a
+`stablr/…` relative path after `cd stablr`); the canonical copy was
+historically placed manually.
+
+Procedure for future pin moves (as executed for this bump):
 
 1. `cd stablr && git fetch origin && git checkout <new-sha> && cd .. &&
    git add stablr && git commit` (record the bump).
 2. Re-run the full chain: `./run_all.sh` (many hours; the v2 LOCO
    benchmark dominates).
-3. Regenerate the verification evidence: checksum every committed result
-   artifact before and after an independent rerun, and replace
-   `verification/pre_run_checksums.txt`, `post_run_checksums.txt`, and
-   `checksum_diff.txt`.
+3. Compare every committed result artifact against the re-run
+   (checksums + claims-ledger impact) and record the evidence in
+   `verification/`.
 4. Refresh `sessionInfo.txt` and commit code, results, and evidence
    together.
 
