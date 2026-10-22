@@ -9,3 +9,8 @@ outputs/
 .Rhistory
 .RData
 *.Rcheck/
+
+# Paper-figure outputs ARE committed (small PNGs/CSVs, part of the
+# reproduction record); only the top-level re-run artifacts stay ignored.
+!fig*/outputs/
+!fig*/outputs/**

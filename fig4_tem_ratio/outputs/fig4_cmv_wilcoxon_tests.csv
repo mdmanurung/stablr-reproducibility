@@ -1,0 +1,61 @@
+"Dataset","Age_group","Major_Annotation",".y.","group1","group2","n1","n2","statistic","p","p.adj"
+"KCL","Old","CD4 T Naive","percent","Negative","Positive",50,47,1687,0.000222292233700637,0.012226072853535
+"KCL","Old","CD4 T Temra","percent","Negative","Positive",50,47,241,1.6011989091348e-11,8.80659400024139e-10
+"KCL","Old","CD4 T Terminal effector","percent","Negative","Positive",50,47,178,6.32553229538058e-13,3.47904276245932e-11
+"KCL","Old","CD8 T IFN+ cells","percent","Negative","Positive",50,47,1436,0.0573034396545999,1
+"KCL","Old","CD8 T NKT-like","percent","Negative","Positive",50,47,680,0.000336764666025689,0.0185220566314129
+"KCL","Old","CD8 T Naive","percent","Negative","Positive",50,47,1598,0.00228999118475484,0.125949515161516
+"KCL","Old","CD8 T RTE","percent","Negative","Positive",50,47,1342,0.220942505308781,1
+"KCL","Old","CD8 T Tcm CCR4+","percent","Negative","Positive",50,47,1462,0.0386320776440979,1
+"KCL","Old","CD8 T Tcm CCR4-","percent","Negative","Positive",50,47,1193,0.899476418407276,1
+"KCL","Old","CD8 T Tem GZMB+","percent","Negative","Positive",50,47,272,7.28609695477609e-11,4.00735332512685e-09
+"KCL","Old","CD8 T Temra","percent","Negative","Positive",50,47,1553,0.00643086929858205,0.353697811422013
+"KCL","Old","CD8 T Trm","percent","Negative","Positive",50,47,1425,0.0716988261931891,1
+"KCL","Old","NK CD56dim CD57+","percent","Negative","Positive",50,47,519,2.22657478893414e-06,0.000122461613391378
+"KCL","Old","NK CD56dim CD57int","percent","Negative","Positive",50,47,1645,0.000701326768919114,0.0385729722905513
+"KCL","Old","NK CD56dim CD57low","percent","Negative","Positive",50,47,1697,0.000166936710123995,0.00918151905681971
+"KCL","Young","CD4 T Naive","percent","Negative","Positive",20,24,289,0.255830249265067,1
+"KCL","Young","CD4 T Temra","percent","Negative","Positive",20,24,107,0.00178917414009373,0.098404577705155
+"KCL","Young","CD4 T Terminal effector","percent","Negative","Positive",20,24,36,1.61156836979942e-06,8.86362603389679e-05
+"KCL","Young","CD8 T IFN+ cells","percent","Negative","Positive",20,24,283,0.31989200633683,1
+"KCL","Young","CD8 T NKT-like","percent","Negative","Positive",20,24,67,4.72696132109262e-05,0.00259982872660094
+"KCL","Young","CD8 T Naive","percent","Negative","Positive",20,24,290,0.246068757069384,1
+"KCL","Young","CD8 T RTE","percent","Negative","Positive",20,24,198.5,0.333837401095219,1
+"KCL","Young","CD8 T Tcm CCR4+","percent","Negative","Positive",20,24,346,0.01184581681674,0.651519924920697
+"KCL","Young","CD8 T Tcm CCR4-","percent","Negative","Positive",20,24,311,0.0968592191135421,1
+"KCL","Young","CD8 T Tem GZMB+","percent","Negative","Positive",20,24,133,0.0110303294161075,0.606668117885914
+"KCL","Young","CD8 T Temra","percent","Negative","Positive",20,24,290,0.246068757069384,1
+"KCL","Young","CD8 T Trm","percent","Negative","Positive",20,24,269,0.505568032107068,1
+"KCL","Young","NK CD56dim CD57+","percent","Negative","Positive",20,24,108,0.00146529123037338,0.0805910176705356
+"KCL","Young","NK CD56dim CD57int","percent","Negative","Positive",20,24,353,0.00708673792525075,0.389770585888791
+"KCL","Young","NK CD56dim CD57low","percent","Negative","Positive",20,24,336,0.0233090713347026,1
+"SoundLife","Old","CD4 T Naive","percent","Negative","Positive",22,25,290,0.759430890488543,1
+"SoundLife","Old","CD4 T Temra","percent","Negative","Positive",22,25,43,4.8640486463706e-08,2.67522675550383e-06
+"SoundLife","Old","CD4 T Terminal effector","percent","Negative","Positive",22,25,115,0.000446182193542851,0.0245400206448568
+"SoundLife","Old","CD8 T IFN+ cells","percent","Negative","Positive",22,25,375,0.0329850011585597,1
+"SoundLife","Old","CD8 T NKT-like","percent","Negative","Positive",22,25,106,0.000191063195690179,0.0105084757629599
+"SoundLife","Old","CD8 T Naive","percent","Negative","Positive",22,25,408,0.00403358137432011,0.221846975587606
+"SoundLife","Old","CD8 T RTE","percent","Negative","Positive",22,25,294.5,0.685409098892595,1
+"SoundLife","Old","CD8 T Tcm CCR4+","percent","Negative","Positive",22,25,465,2.02590743306108e-05,0.00111424908818359
+"SoundLife","Old","CD8 T Tcm CCR4-","percent","Negative","Positive",22,25,423,0.00126027448330568,0.0693150965818124
+"SoundLife","Old","CD8 T Tem GZMB+","percent","Negative","Positive",22,25,76,6.78880292124426e-06,0.000373384160668434
+"SoundLife","Old","CD8 T Temra","percent","Negative","Positive",22,25,202,0.122937828064288,1
+"SoundLife","Old","CD8 T Trm","percent","Negative","Positive",22,25,454,0.000141379239614283,0.00777585817878554
+"SoundLife","Old","NK CD56dim CD57+","percent","Negative","Positive",22,25,139,0.00323245739996334,0.177785156997984
+"SoundLife","Old","NK CD56dim CD57int","percent","Negative","Positive",22,25,369,0.0454955944299583,1
+"SoundLife","Old","NK CD56dim CD57low","percent","Negative","Positive",22,25,375.5,0.0330011911333939,1
+"SoundLife","Young","CD4 T Naive","percent","Negative","Positive",30,19,355,0.155190418313375,1
+"SoundLife","Young","CD4 T Temra","percent","Negative","Positive",30,19,8,7.10811796017093e-12,3.90946487809401e-10
+"SoundLife","Young","CD4 T Terminal effector","percent","Negative","Positive",30,19,67,1.52911287010183e-06,8.41012078556007e-05
+"SoundLife","Young","CD8 T IFN+ cells","percent","Negative","Positive",30,19,446,0.000691854443932039,0.0380519944162622
+"SoundLife","Young","CD8 T NKT-like","percent","Negative","Positive",30,19,40,2.16472958367928e-08,1.1906012710236e-06
+"SoundLife","Young","CD8 T Naive","percent","Negative","Positive",30,19,462,0.000164538295163077,0.00904960623396924
+"SoundLife","Young","CD8 T RTE","percent","Negative","Positive",30,19,458.5,0.000385266770275166,0.0211896723651341
+"SoundLife","Young","CD8 T Tcm CCR4+","percent","Negative","Positive",30,19,441,0.00104543544574765,0.0574989495161208
+"SoundLife","Young","CD8 T Tcm CCR4-","percent","Negative","Positive",30,19,503,1.52911287010183e-06,8.41012078556007e-05
+"SoundLife","Young","CD8 T Tem GZMB+","percent","Negative","Positive",30,19,77,5.61197084370737e-06,0.000308658396403905
+"SoundLife","Young","CD8 T Temra","percent","Negative","Positive",30,19,56,3.13762405436665e-07,1.72569322990166e-05
+"SoundLife","Young","CD8 T Trm","percent","Negative","Positive",30,19,461,0.000180976413648694,0.00995370275067817
+"SoundLife","Young","NK CD56dim CD57+","percent","Negative","Positive",30,19,44,4.43631433764937e-08,2.43997288570715e-06
+"SoundLife","Young","NK CD56dim CD57int","percent","Negative","Positive",30,19,456,0.000288077077433858,0.0158442392588622
+"SoundLife","Young","NK CD56dim CD57low","percent","Negative","Positive",30,19,336,0.303223004492643,1

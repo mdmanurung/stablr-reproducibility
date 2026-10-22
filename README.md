@@ -27,7 +27,37 @@ download, analysis, plots, report — runs on one machine with no other inputs.
 | `run_v2_pipeline.sh` | v2 predeclared benchmark: data prep, LOCO benchmark, null, biology, figures |
 | `render_reports.sh` | Render the case-study vignette (or all vignettes) to `outputs/reports/` |
 | `run_all.sh` | The whole chain in order |
+| `fig_support.R` | Shared data layer for the paper-figure scripts: reads the raw atlas with the authors' column semantics, rebuilds the authors' major/minor percentage tables and the harmonized 59-feature donor matrix, and holds the paper palettes |
+| `fig1_atlas_overview/` … `fig5_clock_trajectories/` | Paper-figure ports: one directory per main paper figure, each with a ported R script, a README (panels, provenance, status), and committed `outputs/` |
+| `run_fig1.sh` … `run_fig5.sh` | Entry points for the paper figures: download data if missing, then run the corresponding script |
 | `sessionInfo.txt` | R version and package versions used for the committed results |
+
+## Paper-figure reproduction map
+
+The five main figures of the source publication (Terekhova et al. 2026,
+*Immunity*, DOI 10.1016/j.immuni.2026.09.012) are reproduced
+figure-by-figure from the authors' own analysis code
+(`Figures_pipeline/figures_pipeline.R` and the `Age_clock_model`
+notebook in the authors' repo), ported to run on this compendium's
+MD5-pinned raw atlas. Each directory's README documents panel-by-panel
+provenance, status, and any substitutions; committed outputs live in
+each directory's `outputs/`.
+
+| Paper figure | Directory | Status |
+|---|---|---|
+| Fig 1 / S1 — atlas overview | `fig1_atlas_overview/` | Full port; one substitution: `ggpattern` pattern fills → sex-dodged bars (`ggpattern`'s `sf`/`units` system deps unavailable) |
+| Fig 2 / S2 / S3 — age associations | `fig2_age_associations/` | Full port: Pearson r + `lm(percent ~ Age + Sex + Ethnicity)` with BH per dataset, heatmap/boxplots/alluvial, CD8 scatters, oldest-old Dunn tests, variancePartition |
+| Fig 3 / S3 — CD8 composition PCA | `fig3_cd8_pca/` | Full port: scree, biplot, PC2 contributions, age gradient, dataset scatter, Tem-ratio coloring |
+| Fig 4 / S4 — Tem GZMK+/GZMB+ ratio | `fig4_tem_ratio/` | Ported except the Aquino et al. external-validation panel (validation data not shipped) |
+| Fig 5 / S5 — aging clock + trajectories | `fig5_clock_trajectories/` | Clock ported (ridge on the authors' 20-population `selected_by_marina` panel, fixed all-8-cohort LOCO); LOCO MAE 13.9–14.7 y vs the paper's 8.2 / 8.9 y under the notebook's easier splits — see the figure README; Olink and UKBB trajectory components are stubs (data not public) |
+
+Run any figure with `./run_figN.sh` (downloads the raw atlas if
+missing). These ports reproduce the paper's own analyses and are
+independent of the stablr benchmark pipeline (`run_v1_showcase.sh` /
+`run_v2_pipeline.sh`), which evaluates the stablr method on the same
+data. The pre-existing `figures/` directory remains the browsing copy
+of the vignette/benchmark figures — paper-figure outputs live in the
+`figN_*/outputs/` directories instead.
 
 ## Prerequisites
 
